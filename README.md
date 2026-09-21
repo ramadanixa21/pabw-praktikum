@@ -1,4 +1,7 @@
-# pabw-praktikum
+# pabw-praktikum Ramadani Zein Abdullah -25523099
+
+Repo ini memuat pekerjaan matkul pabw, 1 folder untuk setiap pertemuan
+
 ## Pertemuan 3 — Halaman profil saya
 
 Topik halaman saya: Jadwal dan target olahraga saya.
