@@ -12,7 +12,7 @@ Topik halaman saya: Jadwal dan target olahraga saya.
 - **Dua bagian utama:** Ringkasan Jadwal Mingguan, Formulir Catat Latihan Baru
 - **Kolom tabel:** Hari, Jenis Olahraga, Durasi (menit), Kalori Terbakar
 - **Kolom form:** Jenis Olahraga, Tanggal Latihan, Durasi (menit)
-- **Gambar:** `olahraga-1.webp`
+- **Gambar:** `Foto Sepatu.jpg`
 
 ## catatan penggunaan AI
 
