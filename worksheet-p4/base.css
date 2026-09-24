@@ -1,4 +1,3 @@
-/* C.1 — Reset ringan dan box-sizing global */
 *, *::before, *::after {
   box-sizing: border-box; /* width mencakup padding + border */
 }
@@ -13,9 +12,9 @@ img {
   display: block;
 }
 
-/* C.2 — Tipografi dan warna dasar halaman */
+
 html {
-  font-size: 100%; /* ikuti pengaturan pengguna */
+  font-size: 100%;
 }
 
 body {
