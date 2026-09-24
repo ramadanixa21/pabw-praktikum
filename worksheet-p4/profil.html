@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-<!--
-  KERANGKA AWAL — Halaman Profil Saya
-  PABW 2026/2027 · Pertemuan 3
-
-  Cara pakai:
-  1. Salin berkas ini, ganti nama menjadi profil.html
-  2. Ganti setiap tulisan TODO dengan isi milik Anda SENDIRI
-  3. Simpan, lalu buka di peramban (F5 untuk memuat ulang)
-  4. Kerjakan berurutan mengikuti Lembar B, C, D, dan E pada worksheet
-
-  Jangan menghapus komentar TODO sebelum bagian itu Anda kerjakan —
-  komentar itu adalah daftar periksa Anda sendiri.
--->
 <html lang="id">
 <head>
   <meta charset="utf-8">
@@ -28,55 +15,48 @@
 <body>
 
   <header>
-    <h1>Jurnal & Target Olahraga Zein</h1>
-    <p>Halaman catatan rutinitas latihan mingguan dan pencapaian target kebugaran pribadi.</p>
-    <nav aria-label="Navigasi utama">
-      <ul>
-        <li><a href="#jadwal-latihan">Jadwal Latihan</a></li>
-        <li><a href="#pencatatan-latihan">Catat Latihan</a></li>
-        <li><a href="#galeri">Galeri Latihan</a></li>
-      </ul>
-    </nav>
+    <div class="header-baris">
+      <div>
+        <h1>Jurnal & Target Olahraga Zein</h1>
+        <p>Halaman catatan rutinitas latihan mingguan dan pencapaian target kebugaran pribadi.</p>
+      </div>
+      <nav aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#jadwal-latihan">Jadwal Latihan</a></li>
+          <li><a href="#pencatatan-latihan">Catat Latihan</a></li>
+          <li><a href="#galeri">Galeri Latihan</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Section 1: Tabel Data Mingguan -->
     <section id="jadwal-latihan">
       <h2>Ringkasan Jadwal Mingguan</h2>
+      <p>Jadwal dan Statistik Latihan Minggu Ini</p>
       
-      <table>
-        <caption>Jadwal dan Statistik Latihan Minggu Ini</caption>
-        <thead>
-          <tr>
-            <th scope="col">Hari</th>
-            <th scope="col">Jenis Olahraga</th>
-            <th scope="col">Durasi (menit)</th>
-            <th scope="col">Kalori Terbakar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Senin</th>
-            <td>Lari Pagi</td>
-            <td>30</td>
-            <td>250 kcal</td>
-          </tr>
-          <tr>
-            <th scope="row">Rabu</th>
-            <td>GYM</td>
-            <td>45</td>
-            <td>320 kcal</td>
-          </tr>
-          <tr>
-            <th scope="row">Jumat</th>
-            <td>Futsal</td>
-            <td>60</td>
-            <td>400 kcal</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="katalog">
+        <div class="kartu">
+          <h3>Senin</h3>
+          <p><strong>Olahraga:</strong> Lari Pagi</p>
+          <p><strong>Durasi:</strong> 30 menit</p>
+          <p><strong>Kalori:</strong> 250 kcal</p>
+        </div>
+        <div class="kartu">
+          <h3>Rabu</h3>
+          <p><strong>Olahraga:</strong> GYM</p>
+          <p><strong>Durasi:</strong> 45 menit</p>
+          <p><strong>Kalori:</strong> 320 kcal</p>
+        </div>
+        <div class="kartu">
+          <h3>Jumat</h3>
+          <p><strong>Olahraga:</strong> Futsal</p>
+          <p><strong>Durasi:</strong> 60 menit</p>
+          <p><strong>Kalori:</strong> 400 kcal</p>
+        </div>
+      </div>
 
-      <figure id="galeri">
+      <figure id="galeri" style="margin-top: var(--space-4);">
         <img src="../Foto Sepatu.jpg" alt="Ringkasan Jadwal Mingguan" width="640" height="360">
         <figcaption>Perlengkapan wajib sebelum memulai sesi lari pagi mingguan.</figcaption>
       </figure>
@@ -88,17 +68,17 @@
 
       <form action="/simpan" method="post">
         <p>
-          <label for="jenis-olahraga">Jenis Olahraga</label>
+          <label for="jenis-olahraga">Jenis Olahraga</label><br>
           <input type="text" id="jenis-olahraga" name="jenis-olahraga" required placeholder="Contoh: Lari, Renang">
         </p>
         
         <p>
-          <label for="tanggal-latihan">Tanggal Latihan</label>
+          <label for="tanggal-latihan">Tanggal Latihan</label><br>
           <input type="date" id="tanggal-latihan" name="tanggal-latihan" required>
         </p>
 
         <p>
-          <label for="durasi-latihan">Durasi (dalam menit)</label>
+          <label for="durasi-latihan">Durasi (dalam menit)</label><br>
           <input type="number" id="durasi-latihan" name="durasi-latihan" min="1" max="300" required>
         </p>
 
