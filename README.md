@@ -17,3 +17,21 @@ Topik halaman saya: Jadwal dan target olahraga saya.
 ## catatan penggunaan AI
 
 Saya mengerjakan plan di readme sendiri tetapi beberapa syntax menggunakan AI karena saya sedang memahami Bahasa pemrograman HTML dan setelah itu saya Mengerjakan sendiri dan memperbaiki Syntax AI yang tidak sesuai dengan plan saya
+
+
+## Pertemuan 4 — Design token halaman profil
+ 
+- Berkas gaya yang akan dibuat: tokens.css, base.css, layout.css, komponen.css, tema.css
+- Warna utama: #0D9488 (tosca), dipilih karena memberikan kesan modern, segar, dan tingkat kontrasnya aman untuk dibaca.
+ 
+### Token yang saya tetapkan
+ 
+| Token | Nilai | Untuk apa |
+|---|---|---|
+| --color-primary | #0D9488 | tombol, tautan, penanda |
+| --color-fg | #134E4A | warna teks utama |
+| --color-bg | #F0FDFA | latar halaman |
+| --radius-md | 0.75rem | sudut tombol dan kartu |
+| --space-4 | 1.25rem | jarak standar antar elemen |
+ 
+Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus.
