@@ -35,3 +35,6 @@ Saya mengerjakan plan di readme sendiri tetapi beberapa syntax menggunakan AI ka
 | --space-4 | 1.25rem | jarak standar antar elemen |
  
 Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus.
+
+## catatan penggunaan AI
+pengunaan ai : dibantu saat memeriksa kontras warna dan beberapa perbaruan di profil.html
