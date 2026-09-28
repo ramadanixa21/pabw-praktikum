@@ -1,6 +1,6 @@
 .katalog {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
   gap: var(--space-4);
 }
 
@@ -25,7 +25,7 @@
 
 
 .kartu--sorotan {
-  grid-column: span 2;
+  grid-column: 1 / -1;
 }
 
 
