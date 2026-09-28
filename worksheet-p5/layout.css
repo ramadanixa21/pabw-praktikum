@@ -34,12 +34,18 @@ nav a:hover {
   text-decoration: underline; 
 }
 
+
 .isi {
   display: grid;
-  grid-template-columns: 16rem 1fr; /* Kolom 1: sidebar statis, Kolom 2: konten lentur */
+  grid-template-columns: 16rem 1fr;
+  grid-template-areas:
+    "sisi utama";
   gap: var(--space-6);
   padding-block: var(--space-6);
 }
+
+.sisi { grid-area: sisi; }
+.utama { grid-area: utama; }
 
 footer {
   padding-block: var(--space-4);
