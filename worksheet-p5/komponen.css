@@ -79,3 +79,27 @@ input:user-invalid {
 .form-kolom:has(input:user-invalid) .pesan-galat { 
   display: block; 
 }
+
+
+.katalog .kartu {
+  display: grid;
+  align-content: start;
+  min-height: 14rem;
+}
+
+
+.kartu {
+  min-width: 0;
+}
+
+.kartu h3, 
+.kartu p {
+  overflow-wrap: anywhere; 
+}
+
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
