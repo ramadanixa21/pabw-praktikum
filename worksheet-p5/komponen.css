@@ -1,3 +1,39 @@
+/* ==========================================================================
+   C.1 & C.2 Komponen Katalog & Kartu Latihan (Grid + Flexbox)
+   ========================================================================== */
+
+/* C.1 Galeri adaptif tanpa media query */
+.katalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-4);
+}
+
+/* C.2 Isi di dalam satu kartu (menggunakan Flexbox vertikal) */
+.kartu {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--card-pad);
+  
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Baris kaki/tombol pada kartu (jika digunakan) */
+.kartu__kaki {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+
+/* ==========================================================================
+   Komponen Form & Input
+   ========================================================================== */
 
 .form-kolom {
   display: flex;
@@ -27,28 +63,24 @@ button {
   background: var(--color-primary);
   color: var(--color-surface);
   cursor: pointer;
-  margin-top: var(--space-4); /* tambahan jarak tombol */
+  margin-top: var(--space-4);
 }
-
 
 :focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
  
-
 input:user-invalid {
   border-color: var(--color-danger);
   border-width: 2px;
 }
  
-
 .pesan-galat { 
   display: none; 
   color: var(--color-danger); 
   font-size: var(--text-sm); 
 }
-
 
 .form-kolom:has(input:user-invalid) .pesan-galat { 
   display: block; 
