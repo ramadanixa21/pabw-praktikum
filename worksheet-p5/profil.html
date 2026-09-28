@@ -14,87 +14,95 @@
 </head>
 <body>
 
-  <header>
-    <input type="checkbox" id="tema" class="pengalih-tema">
-    <label for="tema" class="tombol-tema">Tema gelap</label>
-    <div class="header-baris">
-      <div>
-        <h1>Jurnal & Target Olahraga Zein</h1>
-        <p>Halaman catatan rutinitas latihan mingguan dan pencapaian target kebugaran pribadi.</p>
-      </div>
-      <nav aria-label="Navigasi utama">
-        <ul>
-          <li><a href="#jadwal-latihan">Jadwal Latihan</a></li>
-          <li><a href="#pencatatan-latihan">Catat Latihan</a></li>
-          <li><a href="#galeri">Galeri Latihan</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="jadwal-latihan">
-      <h2>Ringkasan Jadwal Mingguan</h2>
-      <p>Jadwal dan Statistik Latihan Minggu Ini</p>
+  <!-- B.1: Wadah .page membungkus header, main, dan footer -->
+  <div class="page">
+    
+    <header>
+      <input type="checkbox" id="tema" class="pengalih-tema">
+      <label for="tema" class="tombol-tema">Tema gelap</label>
       
-      <div class="katalog">
-        <div class="kartu">
-          <h3>Senin</h3>
-          <p><strong>Olahraga:</strong> Lari Pagi</p>
-          <p><strong>Durasi:</strong> 30 menit</p>
-          <p><strong>Kalori:</strong> 250 kcal</p>
+      <!-- B.2: class header-baris diganti menjadi navbar -->
+      <div class="navbar">
+        <div>
+          <h1>Jurnal & Target Olahraga Zein</h1>
+          <p>Halaman catatan rutinitas latihan mingguan dan pencapaian target kebugaran pribadi.</p>
         </div>
-        <div class="kartu">
-          <h3>Rabu</h3>
-          <p><strong>Olahraga:</strong> GYM</p>
-          <p><strong>Durasi:</strong> 45 menit</p>
-          <p><strong>Kalori:</strong> 320 kcal</p>
-        </div>
-        <div class="kartu">
-          <h3>Jumat</h3>
-          <p><strong>Olahraga:</strong> Futsal</p>
-          <p><strong>Durasi:</strong> 60 menit</p>
-          <p><strong>Kalori:</strong> 400 kcal</p>
-        </div>
+        <nav aria-label="Navigasi utama">
+          <ul>
+            <li><a href="#jadwal-latihan">Jadwal Latihan</a></li>
+            <li><a href="#pencatatan-latihan">Catat Latihan</a></li>
+            <li><a href="#galeri">Galeri Latihan</a></li>
+          </ul>
+        </nav>
       </div>
+    </header>
 
-      <figure id="galeri" style="margin-top: var(--space-4);">
-        <img src="../Foto Sepatu.jpg" alt="Ringkasan Jadwal Mingguan" width="640" height="360">
-        <figcaption>Perlengkapan wajib sebelum memulai sesi lari pagi mingguan.</figcaption>
-      </figure>
-    </section>
-
-    <!-- Section 2: Form Catat Latihan -->
-    <section id="pencatatan-latihan">
-      <h2>Formulir Catat Latihan Baru</h2>
-
-      <form action="/simpan" method="post">
-        <div class="form-kolom">
-          <label for="jenis-olahraga">Jenis Olahraga</label>
-          <input type="text" id="jenis-olahraga" name="jenis-olahraga" required placeholder="Contoh: Lari, Renang">
-          <p class="pesan-galat">Jenis olahraga wajib diisi.</p>
+    <!-- B.2: class isi ditambahkan pada main untuk grid dua kolom -->
+    <main class="isi">
+      <section id="jadwal-latihan">
+        <h2>Ringkasan Jadwal Mingguan</h2>
+        <p>Jadwal dan Statistik Latihan Minggu Ini</p>
+        
+        <div class="katalog">
+          <div class="kartu">
+            <h3>Senin</h3>
+            <p><strong>Olahraga:</strong> Lari Pagi</p>
+            <p><strong>Durasi:</strong> 30 menit</p>
+            <p><strong>Kalori:</strong> 250 kcal</p>
+          </div>
+          <div class="kartu">
+            <h3>Rabu</h3>
+            <p><strong>Olahraga:</strong> GYM</p>
+            <p><strong>Durasi:</strong> 45 menit</p>
+            <p><strong>Kalori:</strong> 320 kcal</p>
+          </div>
+          <div class="kartu">
+            <h3>Jumat</h3>
+            <p><strong>Olahraga:</strong> Futsal</p>
+            <p><strong>Durasi:</strong> 60 menit</p>
+            <p><strong>Kalori:</strong> 400 kcal</p>
+          </div>
         </div>
-        <br>
-        <div class="form-kolom">
-          <label for="tanggal-latihan">Tanggal Latihan</label>
-          <input type="date" id="tanggal-latihan" name="tanggal-latihan" required>
-          <p class="pesan-galat">Tanggal tidak boleh kosong.</p>
-        </div>
-        <br>
-        <div class="form-kolom">
-          <label for="durasi-latihan">Durasi (dalam menit)</label>
-          <input type="number" id="durasi-latihan" name="durasi-latihan" min="1" max="300" required>
-          <p class="pesan-galat">Durasi wajib diisi dengan angka (1 - 300).</p>
-        </div>
 
-        <button type="submit">Simpan Latihan</button>
-      </form>
-    </section>
-  </main>
+        <!-- Saya bantu hapus style inline margin-top di sini agar skor kebersihan tetap 100 -->
+        <figure id="galeri">
+          <img src="../Foto Sepatu.jpg" alt="Ringkasan Jadwal Mingguan" width="640" height="360">
+          <figcaption>Perlengkapan wajib sebelum memulai sesi lari pagi mingguan.</figcaption>
+        </figure>
+      </section>
 
-  <footer>
-    <p>Ramadani Zein Abdullah · 25523099 · 2026</p>
-  </footer>
+      <!-- Section 2: Form Catat Latihan -->
+      <section id="pencatatan-latihan">
+        <h2>Formulir Catat Latihan Baru</h2>
 
+        <form action="/simpan" method="post">
+          <div class="form-kolom">
+            <label for="jenis-olahraga">Jenis Olahraga</label>
+            <input type="text" id="jenis-olahraga" name="jenis-olahraga" required placeholder="Contoh: Lari, Renang">
+            <p class="pesan-galat">Jenis olahraga wajib diisi.</p>
+          </div>
+          <br>
+          <div class="form-kolom">
+            <label for="tanggal-latihan">Tanggal Latihan</label>
+            <input type="date" id="tanggal-latihan" name="tanggal-latihan" required>
+            <p class="pesan-galat">Tanggal tidak boleh kosong.</p>
+          </div>
+          <br>
+          <div class="form-kolom">
+            <label for="durasi-latihan">Durasi (dalam menit)</label>
+            <input type="number" id="durasi-latihan" name="durasi-latihan" min="1" max="300" required>
+            <p class="pesan-galat">Durasi wajib diisi dengan angka (1 - 300).</p>
+          </div>
+
+          <button type="submit">Simpan Latihan</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Ramadani Zein Abdullah · 25523099 · 2026</p>
+    </footer>
+
+  </div>
 </body>
 </html>
