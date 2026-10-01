@@ -62,3 +62,36 @@ Kriteria selesai saya: Halaman tampil konsisten, rapi, dan bebas dari *horizonta
 
 ## catatan penggunaan AI
 penggunaan ai : dibantu dalam menganalisis dan menyelesaikan masalah *overflow* pada layar 360px (mengubah `span 2` menjadi `1 / -1`).
+
+## Pertemuan 6 – Responsif Mobile-First
+
+Topik: Melanjutkan halaman Pertemuan 5 agar terbaca dari ponsel sampai desktop memakai meta viewport, satuan relatif, dan media query. Halaman dan lima berkas CSS lama dipakai kembali, lalu ditambah satu berkas baru: `responsif.css`.
+
+- **Meta viewport:** `<meta name="viewport" content="width=device-width, initial-scale=1.0">` dipasang di `<head>`, sebelum tautan CSS.
+- **Lebar tetap:** Tidak ditemukan elemen berlebar piksel tetap pada berkas CSS Pertemuan 5 (kolom memakai `rem`, `fr`, dan `minmax`), jadi tidak ada yang perlu diganti.
+- **Gaya dasar (layar sempit):** `.content` dan `.grid` satu kolom (`1fr`) dengan `gap: var(--space-4)`, tanpa media query.
+- **Dua titik henti (`min-width`, satuan `rem`):**
+  - `48rem`: galeri kartu (`.grid`) menjadi 2 kolom.
+  - `60rem`: sidebar (`.sisi`, formulir) bersanding dengan konten (`16rem 1fr`) dan galeri menjadi 3 kolom.
+- **Gambar dan tabel:** `img` dibatasi `max-width: 100%`, tabel riwayat latihan dibungkus `.table-wrap` dengan `overflow-x: auto` sehingga bergulir sendiri di layar sempit.
+- **Perubahan di `profil.html`:** menambah tautan `responsif.css` setelah `tema.css`, menambah kelas `content` pada `<main>` dan `grid` pada daftar kartu, serta menambah tabel Riwayat Latihan Minggu Ini.
+
+### Titik henti yang saya tetapkan
+
+| Titik henti | Yang berubah | Kenapa di lebar itu |
+| --- | --- | --- |
+| `48rem` (768 px) | Galeri dari 1 kolom menjadi 2 kolom | Dua kartu mulai muat berdampingan tanpa terlalu sempit |
+| `60rem` (960 px) | Sidebar bersanding dengan konten, galeri 3 kolom | Ada ruang untuk sidebar `16rem` di samping konten |
+
+### Hasil uji tiga lebar
+
+| Lebar | Jumlah kolom | Catatan |
+| --- | --- | --- |
+| 360 px | 1 | Semua bertumpuk, tabel bergulir sendiri, foto mengecil, tanpa gulir mendatar |
+| 768 px | 1 (konten), 2 (kartu) | Kartu Rabu dan Jumat berdampingan |
+| 1280 px | 2 (konten), 3 (kartu) | Formulir di sidebar kiri, jadwal di kanan |
+
+Kriteria selesai saya: Tidak ada gulir mendatar pada halaman di lebar 360 px, 768 px, dan 1280 px, dan jumlah kolom berubah sesuai titik henti.
+
+## catatan penggunaan AI
+penggunaan ai : menemukan dan memperbaiki luberan pada layar 360 px saat ukuran huruf diperbesar (menu navigasi diberi `flex-wrap: wrap` dan kolom `.page` memakai `minmax(0, 1fr)`).
