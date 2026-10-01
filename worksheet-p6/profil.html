@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jurnal & Target Olahraga Zein</title>
  
-  <!-- urutan ini yang benar: token -> dasar -> tata letak -> komponen -> tema -->
+ 
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="layout.css">
   <link rel="stylesheet" href="komponen.css">
   <link rel="stylesheet" href="tema.css">
+  <link rel="stylesheet" href="responsif.css">
 </head>
 <body>
 
@@ -35,12 +36,12 @@
     </header>
 
     
-    <main class="isi">
+    <main class="isi content">
       <section id="jadwal-latihan" class="utama"> 
         <h2>Ringkasan Jadwal Mingguan</h2>
         <p>Jadwal dan Statistik Latihan Minggu Ini</p>
         
-        <div class="katalog">
+        <div class="katalog grid">
           <div class="kartu kartu--sorotan">
             <h3>Senin</h3>
             <p><strong>Olahraga:</strong> Lari Pagi</p>
@@ -59,6 +60,20 @@
             <p><strong>Durasi:</strong> 60 menit</p>
             <p><strong>Kalori:</strong> 400 kcal</p>
           </div>
+        </div>
+
+        <h3>Riwayat Latihan Minggu Ini</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Hari</th><th>Olahraga</th><th>Durasi</th><th>Kalori</th><th>Catatan</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Senin</td><td>Lari Pagi</td><td>30 menit</td><td>250 kcal</td><td>Rute taman kota</td></tr>
+              <tr><td>Rabu</td><td>GYM</td><td>45 menit</td><td>320 kcal</td><td>Latihan dada dan punggung</td></tr>
+              <tr><td>Jumat</td><td>Futsal</td><td>60 menit</td><td>400 kcal</td><td>Bermain bersama teman kampus</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <figure id="galeri">
