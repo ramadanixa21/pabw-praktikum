@@ -33,8 +33,8 @@ const formatKeahlian = (daftar) => daftar.join(" · ");
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 
-console.log(buatPerkenalan({ nama: "meswa", peran: "Pelari" }));
-console.log(buatPerkenalan({ nama: "ayna", peran: "Pemain futsal" }));
+console.log(buatPerkenalan({ nama: "Meswa", peran: "Pelari" }));
+console.log(buatPerkenalan({ nama: "Ayna", peran: "Pemain futsal" }));
 console.log(formatKeahlian(["Renang", "Yoga"]));
 console.log(formatKeahlian(["Sepeda"]));
 
@@ -60,3 +60,9 @@ console.log(namaLatihan.length === daftarLatihan.length);
 const urutKalori = [...daftarLatihan].sort((a, b) => b.kalori - a.kalori);
 console.table(urutKalori);
 console.table(daftarLatihan);
+
+let totalKalori = 0;
+for (const latihan of daftarLatihan) {
+  totalKalori += latihan.kalori;
+}
+console.log(totalKalori);
