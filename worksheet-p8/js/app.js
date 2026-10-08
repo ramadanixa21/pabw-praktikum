@@ -23,3 +23,17 @@ console.log(typeof profil.jumlahLatihan);
 console.log(kota);
 console.log(kalimat);
 console.log(profil);
+
+function buatPerkenalan({ nama, peran }) {
+  return `${nama} — ${peran}`;
+}
+
+const formatKeahlian = (daftar) => daftar.join(" · ");
+
+console.log(buatPerkenalan(profil));
+console.log(formatKeahlian(profil.keahlian));
+
+console.log(buatPerkenalan({ nama: "meswa", peran: "Pelari" }));
+console.log(buatPerkenalan({ nama: "ayna", peran: "Pemain futsal" }));
+console.log(formatKeahlian(["Renang", "Yoga"]));
+console.log(formatKeahlian(["Sepeda"]));
