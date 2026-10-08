@@ -95,3 +95,21 @@ Kriteria selesai saya: Tidak ada gulir mendatar pada halaman di lebar 360 px, 76
 
 ## catatan penggunaan AI
 penggunaan ai : menemukan dan memperbaiki luberan pada layar 360 px saat ukuran huruf diperbesar (menu navigasi diberi `flex-wrap: wrap` dan kolom `.page` memakai `minmax(0, 1fr)`).
+
+
+## Pertemuan 8 – JavaScript Modern ES6+, Struktur Data, dan Array Methods
+
+**Nama:** Ramadani Zein Abdullah  
+**NIM:** 25523099
+
+Topik: Halaman Jurnal & Target Olahraga Zein (hasil Pertemuan 6) kini memakai JavaScript. Identitas halaman, daftar keahlian, dan daftar latihan disimpan sebagai data di `js/app.js`, lalu diolah dengan fungsi murni dan array methods (`map`, `filter`, `find`).
+
+### Struktur
+
+- `profil.html` dan berkas CSS dari Pertemuan 6
+- `js/app.js` berisi data, dua fungsi murni, dan array methods
+
+### Catatan penggunaan AI
+
+- Contoh kode untuk memunculkan tiga galat di lembar E
+- membantu menjelaskan penjelasan worksheet yang saya tidadk mengerti
