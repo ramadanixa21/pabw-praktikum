@@ -113,3 +113,65 @@ Topik: Halaman Jurnal & Target Olahraga Zein (hasil Pertemuan 6) kini memakai Ja
 
 - Contoh kode untuk memunculkan tiga galat di lembar E
 - membantu menjelaskan penjelasan worksheet yang saya tidadk mengerti
+
+
+## Pertemuan 9 – DOM, Event, dan Interaktivitas
+
+**Nama:** Ramadani Zein Abdullah  
+**NIM:** 25523099
+
+Topik: Halaman Jurnal & Target Olahraga Zein (hasil Pertemuan 8) kini berubah tanpa dimuat ulang. Data `daftarLatihan` dari `js/app.js` dipasang ke halaman sebagai kartu, difilter lewat tombol kategori, dan form catat latihan diberi validasi per kolom. Pekerjaan ada di folder `worksheet-p9/`.
+
+### Struktur
+
+- `profil.html` dan berkas CSS dari Pertemuan 8
+- `js/app.js` berisi data dan fungsi (hanya ditambah `export` dan field `kategori`)
+- `js/dom.js` (baru) berisi pemilihan elemen, render kartu, filter, dan validasi form
+- `bukti/` berisi tiga tangkapan layar Lembar E
+
+### Yang dikerjakan
+
+- **Pemilihan elemen:** semua elemen dipilih dengan `querySelector` dan diuji di Console sampai tidak ada yang `null`. `dom.js` dimuat setelah `app.js`, keduanya `type="module"` sebelum `</body>`.
+- **Render dari data:** kartu latihan dibuat dengan `createElement`, `textContent`, dan `append`, bukan HTML tulisan tangan. Fungsi `render(daftar)` mengosongkan wadah di baris pertama, menangani keadaan kosong, lalu mengisi ulang lewat `DocumentFragment`.
+- **Event delegation:** satu `addEventListener("click")` di `#filter` melayani semua tombol, memakai `event.target.closest("button")` dan `dataset.kategori`. Tombol aktif ditandai dengan kelas `aktif`, gayanya di `komponen.css`.
+- **Validasi form:** penangan `submit` memanggil `event.preventDefault()` di baris pertama. Setiap kolom punya aturan sendiri dengan `trim()`, pesan galat per kolom, `aria-invalid`, tombol kirim yang ditahan (`disabled`) sampai isinya layak, dan `focus()` ke kolom bermasalah.
+- **Keamanan:** tidak ada `innerHTML`; semua isi dimasukkan sebagai teks.
+
+### Elemen yang saya isi
+
+| Bagian halaman | Pemilih | Nama variabel |
+| --- | --- | --- |
+| Daftar latihan | `#daftar` | `wadah` |
+| Baris tombol filter | `#filter` | `barisFilter` |
+| Pesan daftar kosong | `#kosong` | `kosong` |
+| Form | `#form-latihan` | `form` |
+| Kolom form | `#jenis-olahraga`, `#tanggal-latihan`, `#durasi-latihan` | `inputJenis`, `inputTanggal`, `inputDurasi` |
+| Pesan galat | `#galat-jenis`, `#galat-tanggal`, `#galat-durasi` | `galatJenis`, `galatTanggal`, `galatDurasi` |
+
+### Hasil uji
+
+| Yang diuji | Hasil |
+| --- | --- |
+| Jumlah kartu saat halaman dibuka | 3 (sama dengan panjang `daftarLatihan`) |
+| Klik "Kardio" | Hanya Senin dan Jumat tampil |
+| Klik kategori tanpa isi | Kartu hilang, pesan "Belum ada latihan pada kategori ini." muncul |
+| Klik filter berulang | Jumlah kartu tidak berlipat |
+| Kirim form kosong | Halaman tidak dimuat ulang, tiga pesan galat muncul |
+| Kolom hanya berisi spasi | Tetap dinyatakan tidak sah |
+
+### Kasus yang saya temui
+
+| Gejala | Sebab | Perbaikan |
+| --- | --- | --- |
+| `NULL: form`, `NULL: tombolKirim`, `NULL: galatDurasi` di Console | `id="form-latihan"` dan `id="galat-durasi"` belum ada di HTML | Menambah dua id di `profil.html` |
+| `render is not defined` | Fungsi `render` ikut terhapus dari `dom.js` saat mengganti baris terakhir | Mengembalikan fungsi `render` sebelum dipanggil |
+| Pendengar menumpuk di Event Listeners (dipancing sengaja) | `addEventListener` dipasang di dalam `render` | Memasang pendengar sekali di luar `render` |
+| Daftar kosong tanpa penjelasan (dipancing sengaja) | Blok `daftar.length === 0` dinonaktifkan | Mengaktifkan kembali blok keadaan kosong |
+| `querySelectorAll(...).innerHTML` menghasilkan `undefined` | NodeList tidak punya `innerHTML` | Memakai `querySelector` untuk satu elemen |
+
+Kriteria selesai saya: halaman berjalan tanpa galat di Console, daftar terbentuk dari array, kartu tidak pernah berlipat, satu pendengar di induk melayani semua tombol filter, dan form tidak memuat ulang halaman serta menampilkan pesan galat per kolom.
+
+## catatan penggunaan AI
+
+- **Dibantu AI:** penulisan kode `js/dom.js` (render kartu, filter dengan event delegation, validasi form).
+- **Saya kerjakan sendiri:** halaman, data, dan seluruh CSS dari pertemuan sebelumnya; menjalankan dan menguji hasilnya di Console dan DevTools; menemukan dan memperbaiki galat di tabel di atas; memancing dua kasus di Lembar E; tangkapan layar bukti; serta commit ke Git.
