@@ -1,0 +1,50 @@
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+}
+
+header {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {                
+  display: flex;
+  align-items: center;          /* Sumbu silang: rata tengah */
+  justify-content: space-between; /* Sumbu utama: judul kiri, menu kanan */
+  gap: var(--space-4);
+  flex-wrap: wrap;              /* Turun baris di layar sempit, jangan meluber */
+}
+ 
+nav ul {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;             /* Daftar nav tanpa butir */
+  padding: 0;
+}
+ 
+nav a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+ 
+nav a:hover { 
+  text-decoration: underline; 
+}
+
+
+.isi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-6);
+  padding-block: var(--space-6);
+}
+
+footer {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-fg);       
+  font-size: var(--text-sm);
+}
