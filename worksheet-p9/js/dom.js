@@ -1,17 +1,17 @@
 import { daftarLatihan } from "./app.js";
 
-const wadah = document.querySelector("#daftar");
+const wadah       = document.querySelector("#daftar");
 const barisFilter = document.querySelector("#filter");
-const kosong = document.querySelector("#kosong");
+const kosong      = document.querySelector("#kosong");
 
-const form = document.querySelector("#form-latihan");
-const inputJenis = document.querySelector("#jenis-olahraga");
+const form         = document.querySelector("#form-latihan");
+const inputJenis   = document.querySelector("#jenis-olahraga");
 const inputTanggal = document.querySelector("#tanggal-latihan");
-const inputDurasi = document.querySelector("#durasi-latihan");
-const tombolKirim = document.querySelector("#form-latihan button[type='submit']");
-const galatJenis = document.querySelector("#galat-jenis");
+const inputDurasi  = document.querySelector("#durasi-latihan");
+const tombolKirim  = document.querySelector("#form-latihan button[type='submit']");
+const galatJenis   = document.querySelector("#galat-jenis");
 const galatTanggal = document.querySelector("#galat-tanggal");
-const galatDurasi = document.querySelector("#galat-durasi");
+const galatDurasi  = document.querySelector("#galat-durasi");
 
 function buatBaris(label, nilai) {
   const p = document.createElement("p");
@@ -51,4 +51,26 @@ function render(daftar) {
   wadah.append(fragmen);
 }
 
+function tandaiTombolAktif(tombolAktif) {
+  document.querySelectorAll("#filter button").forEach((tombol) => {
+    const aktif = tombol === tombolAktif;
+    tombol.classList.toggle("aktif", aktif);
+    tombol.setAttribute("aria-pressed", aktif);
+  });
+}
+
+barisFilter.addEventListener("click", (event) => {
+  const tombol = event.target.closest("button");
+  if (!tombol) return;
+
+  const kategori = tombol.dataset.kategori;
+  const terpilih = daftarLatihan.filter(
+    (latihan) => kategori === "semua" || latihan.kategori === kategori
+  );
+
+  tandaiTombolAktif(tombol);
+  render(terpilih);
+});
+
+tandaiTombolAktif(barisFilter.querySelector('[data-kategori="semua"]'));
 render(daftarLatihan);
