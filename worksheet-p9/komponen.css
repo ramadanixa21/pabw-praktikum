@@ -65,7 +65,7 @@ button {
   outline-offset: 2px;
 }
  
-input:user-invalid {
+input[aria-invalid="true"] {
   border-color: var(--color-danger);
   border-width: 2px;
 }
@@ -76,7 +76,7 @@ input:user-invalid {
   font-size: var(--text-sm); 
 }
 
-.form-kolom:has(input:user-invalid) .pesan-galat { 
+.pesan-galat.tampil { 
   display: block; 
 }
 

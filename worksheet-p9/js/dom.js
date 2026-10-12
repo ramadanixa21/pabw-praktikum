@@ -74,3 +74,76 @@ barisFilter.addEventListener("click", (event) => {
 
 tandaiTombolAktif(barisFilter.querySelector('[data-kategori="semua"]'));
 render(daftarLatihan);
+
+const aturan = [
+  {
+    input: inputJenis,
+    galat: galatJenis,
+    periksa: () =>
+      inputJenis.value.trim() === ""
+        ? "Isi jenis olahraga, misalnya Lari atau Renang."
+        : "",
+  },
+  {
+    input: inputTanggal,
+    galat: galatTanggal,
+    periksa: () =>
+      inputTanggal.value === ""
+        ? "Pilih tanggal latihan dari kalender."
+        : "",
+  },
+  {
+    input: inputDurasi,
+    galat: galatDurasi,
+    periksa: () => {
+      const angka = Number(inputDurasi.value);
+      const sah = inputDurasi.value.trim() !== ""
+        && Number.isInteger(angka) && angka >= 1 && angka <= 300;
+      return sah ? "" : "Isi durasi dengan angka bulat 1 sampai 300 menit.";
+    },
+  },
+];
+
+function tampilkanGalat({ input, galat, periksa }) {
+  const pesan = periksa();
+  galat.textContent = pesan;
+  galat.classList.toggle("tampil", pesan !== "");
+  if (pesan !== "") {
+    input.setAttribute("aria-invalid", "true");
+  } else {
+    input.removeAttribute("aria-invalid");
+  }
+  return pesan === "";
+}
+
+const formSah = () => aturan.every((item) => item.periksa() === "");
+
+form.addEventListener("input", (event) => {
+  const item = aturan.find((a) => a.input === event.target);
+  if (!item) return;
+  tampilkanGalat(item);
+  tombolKirim.disabled = !formSah();
+});
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const pertamaBermasalah = aturan.filter((item) => !tampilkanGalat(item))[0];
+  if (pertamaBermasalah) {
+    pertamaBermasalah.input.focus();
+    return;
+  }
+
+  console.log("Latihan baru:", {
+    olahraga: inputJenis.value.trim(),
+    tanggal: inputTanggal.value,
+    durasi: Number(inputDurasi.value),
+  });
+
+  form.reset();
+  aturan.forEach((item) => {
+    item.galat.classList.remove("tampil");
+    item.input.removeAttribute("aria-invalid");
+  });
+  tombolKirim.disabled = false;
+});
