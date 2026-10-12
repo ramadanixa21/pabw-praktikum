@@ -38,10 +38,10 @@ console.log(buatPerkenalan({ nama: "Ayna", peran: "Pemain futsal" }));
 console.log(formatKeahlian(["Renang", "Yoga"]));
 console.log(formatKeahlian(["Sepeda"]));
 
-const daftarLatihan = [
-  { hari: "Senin", olahraga: "Lari Pagi", durasi: 30, kalori: 250 },
-  { hari: "Rabu", olahraga: "GYM", durasi: 45, kalori: 320 },
-  { hari: "Jumat", olahraga: "Futsal", durasi: 60, kalori: 400 },
+export const daftarLatihan = [
+  { hari: "Senin", olahraga: "Lari Pagi", durasi: 30, kalori: 250, kategori: "kardio" },
+  { hari: "Rabu", olahraga: "GYM", durasi: 45, kalori: 320, kategori: "kekuatan" },
+  { hari: "Jumat", olahraga: "Futsal", durasi: 60, kalori: 400, kategori: "kardio" },
 ];
 
 console.table(profil.keahlian);
