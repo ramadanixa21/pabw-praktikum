@@ -70,11 +70,26 @@ for (const latihan of daftarLatihan) {
 }
 console.log(totalKalori);
 
-// Fungsi pemuat utama (Lembar B & D)
+
 async function muat() {
   aturMemuat(true);
   try {
     const data = await ambilProyek();
+    
+    
+    console.log("Data dari JSON:", data);
+    console.log("Butir pertama:", data[0].olahraga);
+
+    
+    const contohKirim = JSON.stringify({
+      hari: "Minggu",
+      olahraga: "Renang",
+      durasi: 45,
+      kalori: 350,
+      kategori: "kardio"
+    });
+    console.log("Hasil stringify (tipe " + typeof contohKirim + "):", contohKirim);
+
     daftarLatihan = data;
     render(daftarLatihan);
   } catch (galat) {
