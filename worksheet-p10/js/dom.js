@@ -3,6 +3,8 @@ import { daftarLatihan } from "./app.js";
 const wadah       = document.querySelector("#daftar");
 const barisFilter = document.querySelector("#filter");
 const kosong      = document.querySelector("#kosong");
+const muatElemen  = document.querySelector("#muat");
+const galatElemen = document.querySelector("#galat");
 
 const form         = document.querySelector("#form-latihan");
 const inputJenis   = document.querySelector("#jenis-olahraga");
@@ -37,10 +39,29 @@ function buatKartu(latihan, urutan) {
   return kartu;
 }
 
-function render(daftar) {
+export function aturMemuat(sedangMemuat) {
+  muatElemen.hidden = !sedangMemuat;
+  if (sedangMemuat) {
+    galatElemen.hidden = true;
+    galatElemen.classList.remove("tampil");
+  }
+}
+
+export function tampilkanGalat(pesan) {
   wadah.textContent = "";
+  kosong.hidden = true;
+  galatElemen.textContent = pesan;
+  galatElemen.hidden = false;
+  galatElemen.classList.add("tampil");
+}
+
+export function render(daftar) {
+  wadah.textContent = "";
+  galatElemen.hidden = true;
+  galatElemen.classList.remove("tampil");
 
   if (daftar.length === 0) {
+    kosong.textContent = "Belum ada data.";
     kosong.hidden = false;
     return;
   }
@@ -73,7 +94,6 @@ barisFilter.addEventListener("click", (event) => {
 });
 
 tandaiTombolAktif(barisFilter.querySelector('[data-kategori="semua"]'));
-render(daftarLatihan);
 
 const aturan = [
   {
@@ -104,7 +124,7 @@ const aturan = [
   },
 ];
 
-function tampilkanGalat({ input, galat, periksa }) {
+function validasiInput({ input, galat, periksa }) {
   const pesan = periksa();
   galat.textContent = pesan;
   galat.classList.toggle("tampil", pesan !== "");
@@ -121,14 +141,14 @@ const formSah = () => aturan.every((item) => item.periksa() === "");
 form.addEventListener("input", (event) => {
   const item = aturan.find((a) => a.input === event.target);
   if (!item) return;
-  tampilkanGalat(item);
+  validasiInput(item);
   tombolKirim.disabled = !formSah();
 });
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const pertamaBermasalah = aturan.filter((item) => !tampilkanGalat(item))[0];
+  const pertamaBermasalah = aturan.filter((item) => !validasiInput(item))[0];
   if (pertamaBermasalah) {
     pertamaBermasalah.input.focus();
     return;

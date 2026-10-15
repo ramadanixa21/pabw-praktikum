@@ -1,4 +1,5 @@
 import { ambilProyek } from "./api.js";
+import { render, tampilkanGalat, aturMemuat } from "./dom.js";
 
 const profil = {
   nama: "Ramadani Zein Abdullah",
@@ -40,7 +41,7 @@ console.log(buatPerkenalan({ nama: "Ayna", peran: "Pemain futsal" }));
 console.log(formatKeahlian(["Renang", "Yoga"]));
 console.log(formatKeahlian(["Sepeda"]));
 
-export const daftarLatihan = [
+export let daftarLatihan = [
   { hari: "Senin", olahraga: "Lari Pagi", durasi: 30, kalori: 250, kategori: "kardio" },
   { hari: "Rabu", olahraga: "GYM", durasi: 45, kalori: 320, kategori: "kekuatan" },
   { hari: "Jumat", olahraga: "Futsal", durasi: 60, kalori: 400, kategori: "kardio" },
@@ -69,6 +70,20 @@ for (const latihan of daftarLatihan) {
 }
 console.log(totalKalori);
 
-// Pengujian Lembar A: Panggil fetch dan sediakan muat() di console
-window.muat = ambilProyek;
-ambilProyek();
+// Fungsi pemuat utama (Lembar B & D)
+async function muat() {
+  aturMemuat(true);
+  try {
+    const data = await ambilProyek();
+    daftarLatihan = data;
+    render(daftarLatihan);
+  } catch (galat) {
+    tampilkanGalat("Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman.");
+    console.error(galat.message);
+  } finally {
+    aturMemuat(false);
+  }
+}
+
+window.muat = muat;
+muat();
