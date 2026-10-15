@@ -1,3 +1,5 @@
+import { ambilProyek } from "./api.js";
+
 const profil = {
   nama: "Ramadani Zein Abdullah",
   panggilan: "Zein",
@@ -66,3 +68,7 @@ for (const latihan of daftarLatihan) {
   totalKalori += latihan.kalori;
 }
 console.log(totalKalori);
+
+// Pengujian Lembar A: Panggil fetch dan sediakan muat() di console
+window.muat = ambilProyek;
+ambilProyek();

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "hari": "Senin",
+    "olahraga": "Lari Pagi",
+    "durasi": 30,
+    "kalori": 250,
+    "kategori": "kardio"
+  },
+  {
+    "id": 2,
+    "hari": "Rabu",
+    "olahraga": "GYM",
+    "durasi": 45,
+    "kalori": 320,
+    "kategori": "kekuatan"
+  },
+  {
+    "id": 3,
+    "hari": "Jumat",
+    "olahraga": "Futsal",
+    "durasi": 60,
+    "kalori": 400,
+    "kategori": "kardio"
+  }
+]
