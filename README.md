@@ -175,3 +175,52 @@ Kriteria selesai saya: halaman berjalan tanpa galat di Console, daftar terbentuk
 
 - **Dibantu AI:** penulisan kode `js/dom.js` (render kartu, filter dengan event delegation, validasi form).
 - **Saya kerjakan sendiri:** halaman, data, dan seluruh CSS dari pertemuan sebelumnya; menjalankan dan menguji hasilnya di Console dan DevTools; menemukan dan memperbaiki galat di tabel di atas; memancing dua kasus di Lembar E; tangkapan layar bukti; serta commit ke Git.
+
+
+## Pertemuan 10 – JavaScript Asinkron: fetch, Promise, dan JSON
+
+**Nama:** Ramadani Zein Abdullah  
+**NIM:** 25523099
+
+Topik: Halaman Jurnal & Target Olahraga Zein (hasil Pertemuan 9) kini mengambil data jadwal latihan secara asinkron dari jaringan memakai `fetch`, `async/await`, dan JSON. Lapisan pengambilan data dipisahkan ke dalam `js/api.js`, perakit di `js/app.js`, dan penggambaran empat keadaan antarmuka (memuat, berhasil, gagal, kosong) di `js/dom.js`. Pekerjaan ada di folder `worksheet-p10/`.
+
+### Struktur
+
+- `profil.html` dan enam berkas CSS dari pertemuan sebelumnya (ditambah elemen `#muat` dan `#galat`)
+- `data/proyek.json` (baru) berisi data jadwal latihan mingguan dalam format JSON
+- `js/api.js` (baru) berisi `ALAMAT` di satu tempat dan fungsi `export async function ambilProyek()`
+- `js/dom.js` berisi manipulasi DOM dan mengekspor kontrak `render`, `tampilkanGalat`, serta `aturMemuat`
+- `js/app.js` berisi perakit utama `async function muat()` dengan blok `try / catch / finally`
+
+### Yang dikerjakan
+
+- **Pemisahan lapisan data (`js/api.js`):** Data array dari `app.js` dipindahkan ke `data/proyek.json` (dan diambil juga lewat `raw.githubusercontent.com`). Kata `fetch` hanya muncul di `js/api.js` dengan pemeriksaan `if (!respons.ok)` sebelum memanggil `respons.json()`.
+- **Penanganan galat dengan `async/await` dan `try/catch`:** Mengubah rantai Promise menjadi `async/await` yang dibungkus `try/catch` di `api.js` dan ditangkap kembali di `app.js` untuk menampilkan pesan galat di halaman (bukan sekadar di Console).
+- **Membaca JSON dua arah:** Membaca teks JSON dari jaringan menjadi larik objek JavaScript dengan `respons.json()`, dan menguji arah sebaliknya (objek ke teks JSON) dengan `JSON.stringify()`.
+- **Empat keadaan antarmuka (`js/dom.js`):** Menampilkan pesan memuat (`#muat`) sebelum balasan datang, menggambar kartu ke `#daftar` saat berhasil, menampilkan pesan galat (`#galat`) saat jaringan mati atau status 404/500, dan menampilkan pesan kosong (`#kosong`) saat larik bernilai `[]`.
+
+### Empat keadaan antarmuka yang saya tangani
+
+| Keadaan | Pemilih | Kapan tampil | Apa yang tampil di halaman |
+| --- | --- | --- | --- |
+| Memuat | `#muat` | Sebelum balasan `fetch` selesai (`aturMemuat(true)`) | Teks "Memuat data latihan..." |
+| Berhasil | `#daftar` | Balasan `200 OK` dan larik berisi data latihan | 3 kartu latihan (Senin, Rabu, Jumat) |
+| Gagal | `#galat` | Jaringan mati (*Offline*) atau status bukan 2xx (404/500) | Pesan merah "Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman." |
+| Kosong | `#kosong` | Balasan sah tetapi larik kosong (`daftar.length === 0`) | Teks "Belum ada data." |
+
+### Kasus yang saya temui
+
+| Gejala | Sebab | Perbaikan |
+| --- | --- | --- |
+| Galat 404 `favicon.ico` di Console saat halaman dibuka | Browser otomatis meminta ikon tab yang belum diatur di HTML | Menambahkan `<link rel="icon" href="data:,">` di dalam `<head>` pada `profil.html` |
+| Nama fungsi `tampilkanGalat` bentrok di `js/dom.js` | Nama `tampilkanGalat` sudah dipakai untuk fungsi validasi input form di Pertemuan 9 | Mengubah nama fungsi validasi form menjadi `validasiInput` dan memakai `tampilkanGalat(pesan)` untuk kontrak galat jaringan |
+| Pesan galat tampil saat nama berkas disalahkan (`data/proyk.json`) | Server mengembalikan status 404 (dipancing sengaja di Lembar B & E) | Ditangani oleh `if (!respons.ok) throw new Error(...)` lalu alamat dikembalikan ke semula |
+| `SyntaxError` saat tanda kutip JSON dihapus atau `await` tanpa `async` | Format JSON tidak sah atau fungsi pemanggil belum diberi kata kunci `async` (dipancing sengaja di Lembar E) | Memastikan fungsi memakai `async` dan mengembalikan tanda kutip ganda yang valid di `data/proyek.json` |
+| Halaman tanpa kartu dan Console bersih tanpa galat | Balasan sah tetapi berisi larik kosong `[]` (dipancing sengaja di Lembar E) | Ditangani oleh pemeriksaan `if (daftar.length === 0)` di `render()` yang menampilkan `#kosong` |
+
+Kriteria selesai saya: `fetch` hanya ada di `js/api.js`, `respons.ok` diperiksa sebelum membaca JSON, keempat keadaan antarmuka (memuat, berhasil, gagal, kosong) tampil dengan benar di halaman, Console bersih dari galat, dan data berhasil dimuat dari `data/proyek.json` maupun `raw.githubusercontent.com`.
+
+## catatan penggunaan AI
+
+- **Dibantu AI:** merapikan pemisahan kode di `js/api.js`, `js/app.js`, dan `js/dom.js` agar sesuai dengan kontrak ekspor fungsi Pertemuan 10, serta menyusun dokumentasi tabel.
+- **Saya kerjakan sendiri:** menyalin dan menyiapkan struktur berkas dari Pertemuan 9, memindahkan data latihan ke `data/proyek.json`, menjalankan pengujian keempat keadaan antarmuka di DevTools (Network & Console), menyimulasikan tiga kasus sulit di Lembar E, mengambil alamat GitHub Raw, serta melakukan commit dan push ke Git.
