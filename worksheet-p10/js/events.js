@@ -1,5 +1,6 @@
-import { state } from "./state.js";
+import { pilihKategori, tambahFavorit } from "./state.js";
 import {
+  wadah,
   barisFilter,
   form,
   inputJenis,
@@ -9,22 +10,19 @@ import {
   aturan,
   validasiInput,
   formSah,
-  tandaiTombolAktif,
-  render,
 } from "./dom.js";
 
 export function pasangPendengar() {
   barisFilter.addEventListener("click", (event) => {
-    const tombol = event.target.closest("button");
+    const tombol = event.target.closest("button[data-kategori]");
     if (!tombol) return;
+    pilihKategori(tombol.dataset.kategori);
+  });
 
-    const kategori = tombol.dataset.kategori;
-    const terpilih = state.daftarProyek.filter(
-      (latihan) => kategori === "semua" || latihan.kategori === kategori
-    );
-
-    tandaiTombolAktif(tombol);
-    render(terpilih);
+  wadah.addEventListener("click", (event) => {
+    const tombol = event.target.closest(".favorit");
+    if (!tombol) return;
+    tambahFavorit(Number(tombol.dataset.id));
   });
 
   form.addEventListener("input", (event) => {
