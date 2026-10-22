@@ -122,3 +122,13 @@ figure img {
   background: var(--color-primary);
   color: var(--color-surface);
 }
+
+.favorit {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #f59e0b;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
