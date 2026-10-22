@@ -224,3 +224,61 @@ Kriteria selesai saya: `fetch` hanya ada di `js/api.js`, `respons.ok` diperiksa 
 
 - **Dibantu AI:** merapikan pemisahan kode di `js/api.js`, `js/app.js`, dan `js/dom.js` agar sesuai dengan kontrak ekspor fungsi Pertemuan 10, serta menyusun dokumentasi tabel.
 - **Saya kerjakan sendiri:** menyalin dan menyiapkan struktur berkas dari Pertemuan 9, memindahkan data latihan ke `data/proyek.json`, menjalankan pengujian keempat keadaan antarmuka di DevTools (Network & Console), menyimulasikan tiga kasus sulit di Lembar E, mengambil alamat GitHub Raw, serta melakukan commit dan push ke Git.
+
+## Pertemuan 11 – Modul, State, dan Penyimpanan Klien
+
+**Nama:** Ramadani Zein Abdullah  
+**NIM:** 25523099
+
+Topik: Halaman Jurnal & Target Olahraga Zein (hasil Pertemuan 10) kini dipecah menjadi lima modul ES6 menurut tanggung jawabnya (`data.js`, `state.js`, `dom.js`, `events.js`, `app.js`) ditambah `api.js` dari Pertemuan 10. Keadaan aplikasi dikeluarkan dari DOM ke dalam satu objek `state`, dilengkapi fitur tanda favorit (`☆`/`★`), tombol atur ulang, dan penyimpanan pilihan pengguna di peramban menggunakan `localStorage` dengan pemeriksaan versi skema. Pekerjaan ada di folder `worksheet-p11/`.
+
+### Struktur
+
+- `profil.html` dan enam berkas CSS dari pertemuan sebelumnya (ditambah tombol `#atur-ulang`)
+- `data/proyek.json` dan `js/api.js` dari Pertemuan 10 (dipakai apa adanya)
+- `js/data.js` (baru) berisi objek `profil` dan fungsi murni (`buatPerkenalan`, `formatKeahlian`, `saring`)
+- `js/state.js` (baru) berisi objek `state` tunggal, fungsi pengubah (`isiProyek`, `pilihKategori`, `tambahFavorit`, `aturUlang`), serta pengelolaan `localStorage` (`simpan`, `muat`, `pulihkan`)
+- `js/dom.js` berisi pemilihan elemen, pembuatan kartu beserta tombol favorit, dan `render(state)`
+- `js/events.js` (baru) berisi pemasangan seluruh pendengar peristiwa (`pasangPendengar`)
+- `js/app.js` berisi perakit utama `async function mulai()`
+
+### Susunan modul dan tanggung jawabnya
+
+| Berkas | Tanggung jawab | Mengimpor dari |
+| --- | --- | --- |
+| `js/api.js` | Mengambil data latihan dari `data/proyek.json` dengan `fetch` | — |
+| `js/data.js` | Menyimpan objek `profil` dan fungsi murni pengolahan/penyaringan data | — |
+| `js/state.js` | Mengelola objek `state` tunggal, fungsi pengubah, dan penyimpanan `localStorage` | `./dom.js` |
+| `js/dom.js` | Memilih elemen, mengubah kelas tombol aktif, dan menggambar kartu lewat `render(state)` | `./data.js` |
+| `js/events.js` | Memasang pendengar klik untuk filter, favorit, atur ulang, dan validasi form | `./state.js`, `./dom.js` |
+| `js/app.js` | Merakit dan menjalankan seluruh modul saat halaman dibuka | `./api.js`, `./state.js`, `./dom.js`, `./events.js` |
+
+### Yang disimpan di `localStorage` dan yang tidak
+
+| Data / Keadaan | Disimpan? | Alasan |
+| --- | --- | --- |
+| `kategoriAktif` | Ya (`pabw-p11`) | Mengingat filter kategori terakhir yang dipilih pengguna setelah tab ditutup |
+| `favorit` | Ya (`pabw-p11`) | Mengingat daftar ID latihan yang ditandai bintang (`★`) oleh pengguna |
+| `versi` (`VERSI = 2`) | Ya (`pabw-p11`) | Memastikan kecocokan skema simpanan; jika berbeda otomatis dibuang |
+| `daftarProyek` | Tidak | Data latihan diambil dari server (`data/proyek.json`) agar selalu terbaru |
+| Token / data pribadi | Tidak | `localStorage` tidak terenkripsi dan dapat dibaca oleh skrip di peramban |
+
+### Hasil uji simpanan dan kerusakan
+
+| Yang diuji | Hasil |
+| --- | --- |
+| Pilih kategori "Kardio" dan tandai favorit, lalu tutup dan buka tab | Pilihan kategori "Kardio" dan tanda `★` tetap bertahan |
+| Klik tombol "Atur ulang" | `localStorage` dihapus, kategori kembali ke "Semua", dan favorit kosong |
+| `localStorage.setItem("pabw-p11", "bukan-json")` lalu muat ulang | Ditangkap `try/catch`, simpanan rusak dihapus, halaman terbuka normal dengan nilai bawaan |
+| `localStorage.setItem("pabw-p11", "{}")` lalu muat ulang | Nomor versi tidak cocok (`undefined !== 2`), simpanan dihapus, halaman tetap terbuka normal |
+
+### Persiapan Pertemuan 12 (Node.js LTS)
+
+- `node -v`: `v22.14.0`
+- `npm -v`: `10.9.2`
+
+Kriteria selesai saya: lima modul berjalan tanpa galat impor di Console, `app.js` hanya merakit, seluruh keadaan berada di satu objek `state` tanpa dibaca dari DOM, pilihan kategori dan favorit bertahan setelah tab ditutup, tombol atur ulang bekerja, dan simpanan rusak atau berbeda versi tertangani dengan aman.
+
+## catatan penggunaan AI
+
+- **Dibantu AI:** memecah kode dari Pertemuan 10 ke dalam lima berkas modul (`data.js`, `state.js`, `dom.js`, `events.js`, `app.js`), menyusun logika penyimpanan `localStorage` beserta pemeriksaan versi di `state.js`, serta merapikan dokumentasi README.
