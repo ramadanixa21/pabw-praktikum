@@ -6,6 +6,8 @@ defineProps({
 
 <template>
   <header>
+    <input type="checkbox" id="tema" class="pengalih-tema">
+    <label for="tema" class="tombol-tema">Tema gelap</label>
     <div class="navbar">
       <div>
         <h1>Jurnal & Target Olahraga {{ profil.panggilan }}</h1>
