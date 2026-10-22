@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jurnal & Target Olahraga Zein</title>
-  <link rel="icon" href="data:,">
+ 
+ 
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="layout.css">
@@ -34,23 +35,25 @@
       </div>
     </header>
 
+    
     <main class="isi content">
       <section id="jadwal-latihan" class="utama"> 
         <h2>Ringkasan Jadwal Mingguan</h2>
         <p>Jadwal dan Statistik Latihan Minggu Ini</p>
 
         <div id="filter" role="group" aria-label="Filter kategori latihan">
-          <button type="button" data-kategori="semua">Semua</button>
-          <button type="button" data-kategori="kardio">Kardio</button>
-          <button type="button" data-kategori="kekuatan">Kekuatan</button>
-          <button type="button" id="atur-ulang">Atur ulang</button>
-        </div>
+         <button type="button" data-kategori="semua">Semua</button>
+         <button type="button" data-kategori="kardio">Kardio</button>
+         <button type="button" data-kategori="kekuatan">Kekuatan</button>
+      </div>
 
         <p id="muat" hidden>Memuat data latihan...</p>
         <p id="kosong" hidden>Belum ada latihan pada kategori ini.</p>
         <p id="galat" class="pesan-galat" hidden></p>
 
-        <div id="daftar" class="katalog grid"></div>
+        <div id="daftar" class="katalog grid">
+
+        </div>
 
         <h3>Riwayat Latihan Minggu Ini</h3>
         <div class="table-wrap">
@@ -72,6 +75,7 @@
         </figure>
       </section>
 
+      <!-- Section 2: Form Catat Latihan -->
       <section id="pencatatan-latihan" class="sisi">
         <h2>Formulir Catat Latihan Baru</h2>
 
@@ -106,5 +110,6 @@
   </div>
 
   <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/dom.js"></script>
 </body>
 </html>
